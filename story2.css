@@ -1,0 +1,166 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'EB Garamond', serif;
+    background:linear-gradient(to bottom,#2f2a1f,#5c4b2a);
+}
+
+/* 3D ENVIRONMENT */
+.background{
+    perspective:4000px;
+}
+
+/* BOOK */
+.book{
+    width:900px;
+    height:550px;
+    position:relative;
+}
+/* COVER */
+.cover{
+    width:50%;
+    height:100%;
+    position:absolute;
+    right:0;
+    transform-origin:left;
+    transform-style:preserve-3d;
+    transition: transform 1.2s ease;
+    z-index:2;
+}
+.cover-front{
+    width:100%;
+    height:100%;
+    background:linear-gradient(gold,#5a3e1b,#2d1b0f);
+    color:#f4e7c5;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    border-right:6px solid #1a0f08;
+    box-shadow:5px 0 25px rgba(0,0,0,.6);
+}
+
+.cover-front h1{
+    font-size:40px;
+    letter-spacing:3px;
+}
+
+#flipCover:checked ~ .background .cover{
+    transform:rotateY(-180deg);
+    z-index:1;
+}
+
+/* LEFT STATIC PAGE */
+.left {
+    width: 50%;
+    padding: 50px;
+    background: #f4e7c5;
+    border-right: 1px solid #c2a878;
+    box-shadow: inset -5px 0 15px rgba(0,0,0,0.2);
+    text-align:justify;
+}
+
+/* RIGHT FLIP PAGES */
+.right {
+    width: 50%;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform 1.2s ease;
+    text-align:justify;
+}
+
+/* Page layering */
+.page1 { z-index: 3; }
+.page2 { z-index: 2; }
+
+/* Flip animations */
+#flip1:checked ~ .background .page1 {
+    transform: rotateY(-180deg);
+}
+
+#flip2:checked ~ .background .page2 {
+    transform: rotateY(-180deg);
+}
+
+/* Front & Back */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    background: #f4e7c5;
+    backface-visibility: hidden;
+    border-left: 1px solid #c2a878;
+    text-align:justify;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+/* Spine */
+.spine {
+    position: absolute;
+    left: 50%;
+    width: 10px;
+    height: 0%;
+    background: linear-gradient(to right, #b89b6b, #d6b97c);
+}
+
+/* Buttons */
+.next-btn, .back-btn {
+    position: absolute;
+    bottom: 20px;
+    padding: 8px 18px;
+    background: #c2a878;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.next-btn { right: 20px; }
+.back-btn { left: 20px; }
+
+.next-btn:hover,
+.back-btn:hover {
+    background: #a88e5d;
+}
+
+button {
+    padding: 10px 25px;
+    background-color: #c2a878;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 80%;
+    margin-top: 20%;
+}
+
+button:hover {
+    background-color: #a88e5d;
+}
+
+.book {
+    width: 900px;
+    height: 550px;
+    position: relative;
+    display: flex;
+    
+}
+
